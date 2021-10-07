@@ -1,0 +1,7 @@
+@function rem($size, $rootSize: 16) {
+  @return ($size / $rootSize) * 1rem;
+}
+
+@function em($size, $rootSize: 16) {
+  @return ($size / $rootSize) * 1em;
+}
