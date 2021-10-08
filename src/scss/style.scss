@@ -3,5 +3,8 @@
 @import 'fonts';
 @import 'globals';
 // components
-@import './components//homeStyle';
-@import './components//productDetails';
+@import './components/header';
+@import './components/menu';
+@import './containers/home';
+@import './components/productDetails';
+@import './components/menuItem';

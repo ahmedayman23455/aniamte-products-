@@ -1,85 +1,38 @@
-import React from 'react';
-import { useParams } from 'react-router';
-import { products } from '../productsData/products';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import { products } from '../data/products';
 
-const easing = [0.6, 0.05, -0.01, 0.9];
-const ProductDetails = () => {
-  const id = useParams().productId;
+const easing = [0.6, -0.05, 0.01, 0.9];
+const transition = { duration: 0.5, ease: easing };
 
-  const product = products.filter((product) => product.id === id)[0];
+function ProductDetails({ menuIsOpen, setMenuIsOpen, setCursorHovered }) {
+  const productId = useParams().productId;
 
-  const fadeInUp = {
-    initial: {
-      y: 72,
-      opacity: 0,
-    },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: easing,
-      },
-    },
-  };
+  const productActive = products.filter(
+    (product) => product.id === productId
+  )[0];
 
   return (
-    <motion.div className="product" exit={{ opacity: 0 }}>
-      {/* left side */}
-      <motion.div
-        className="product__image"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.6, ease: easing } }}
-      >
-        <motion.img
-          src={product.image}
-          alt=""
-          initial={{ x: 50, opacity: 0 }}
-          animate={{
-            x: 0,
-            opacity: 1,
-            transition: { ease: easing, delay: 0.2 },
-          }}
-        />
-      </motion.div>
-
-      {/* right side */}
-      <div className="product__details">
-        <motion.div
-          className="product__detailsContainer"
-          initial="initial"
-          animate="animate"
-          transition={{ staggerChildren: 0.1 }}
-        >
-          <Link to="/" className="back-btn">
-            <motion.p variants={fadeInUp}>Back to products</motion.p>
-          </Link>
-
-          <motion.div variants={fadeInUp} className="product__content">
-            <p>protein</p>
-            <h1>{product.name}</h1>
-            <p>{product.details}</p>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} className="product__quantity">
-            <p>
-              <span>-</span> 1 <span>+</span>
-            </p>
-            <h2>{product.price}</h2>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} className="product__buttons">
-            <motion.button whileHover={{ scale: 0.95 }}>
-              ADD TO CART
-            </motion.button>
-            <button>SUBSCRIBE</button>
-          </motion.div>
-        </motion.div>
+    <motion.div
+      className="product__details"
+      exit={{ opacity: 0 }}
+      transition={transition}
+    >
+      <Header
+        menuIsOpen={menuIsOpen}
+        setMenuIsOpen={setMenuIsOpen}
+        setCursorHovered={setCursorHovered}
+      />
+      <div className="product__detailsContainer">
+        <div className="product__detailsImage">
+          <img src={productActive.thumbnail} alt="" />
+        </div>
+        <h1>{productActive.title}</h1>
       </div>
     </motion.div>
   );
-};
+}
 
 export default ProductDetails;

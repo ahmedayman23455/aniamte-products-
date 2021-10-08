@@ -1,0 +1,35 @@
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5em;
+  margin-top: 1.7em;
+
+  h2 {
+    cursor: pointer;
+  }
+
+  .header__btn {
+    cursor: pointer;
+
+    * {
+      margin-bottom: 0.4em;
+    }
+
+    svg {
+      width: 2em;
+      height: 2em;
+    }
+
+    &.closeBtn {
+      span {
+        &:first-child {
+          transform: rotate(50deg) translateY(0.3em) translateX(0.35em);
+        }
+        &:last-child {
+          transform: rotate(-50deg) translateY(-0.1em);
+        }
+      }
+    }
+  }
+}

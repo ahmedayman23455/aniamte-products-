@@ -1,0 +1,11 @@
+.home__container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .home__cotent {
+    flex: 1;
+    display: grid;
+    place-items: center;
+  }
+}

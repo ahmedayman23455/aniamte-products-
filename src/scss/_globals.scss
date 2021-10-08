@@ -3,15 +3,15 @@
 }
 
 h1 {
-  font-size: rem(32);
+  font-size: rem(48);
 }
 
 h2 {
-  font-size: rem(17.6);
+  font-size: rem(22.4);
 }
 
 h3 {
-  font-size: rem(16);
+  font-size: rem(17.6);
 }
 
 img {
@@ -20,4 +20,25 @@ img {
 
 a {
   text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* ------------------------------ cusror styles ----------------------------- */
+
+.cursor {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: #e7dede;
+  border-radius: 100vh;
+  cursor: pointer;
+  pointer-events: none;
+  // transform-origin: center;
+  // transform: translate(-50%, -50%);
 }
